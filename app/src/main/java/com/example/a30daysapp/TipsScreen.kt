@@ -7,9 +7,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -68,10 +72,52 @@ fun TipCard(
     }
 }
 
-@Preview (showBackground = true)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TipCardPreview(){
-    _30DaysAppTheme {
-        TipCard(TipsRepository.tips[1], 1)
+fun TipCardList(
+    tips: List<Tip>,
+    modifier: Modifier = Modifier
+) {
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string._30_days_of_self_improvement),
+                        style = MaterialTheme.typography.displayLarge
+                    )
+                }
+            )
+        }
+    ) {
+        LazyColumn(
+            contentPadding = it
+        ){
+            repeat(tips.size){
+                item{
+                    TipCard(
+                        tip = tips[it],
+                        tipIndex = it + 1,
+                        modifier = modifier
+                    )
+                }
+            }
+        }
     }
 }
+
+@Preview (showBackground = true)
+@Composable
+fun TipCardListPreview(){
+    _30DaysAppTheme {
+        TipCardList(TipsRepository.tips)
+    }
+}
+
+//@Preview (showBackground = true)
+//@Composable
+//fun TipCardPreview(){
+//    _30DaysAppTheme {
+//        TipCard(TipsRepository.tips[1], 1)
+//    }
+//}
