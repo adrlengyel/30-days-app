@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">30 days app</string>
+    <string name="spend_more_time_in_nature">Spend more time in nature</string>
+    <string name="spend_more_time_in_nature_description">Spend more time in nature description</string>
+    <string name="spend_less_time_on_your_phone">Spend less time on your phone</string>
+    <string name="spend_less_time_on_your_phone_description">Spend less time on your phone description</string>
+    <string name="eat_cleaner_foods">Eat cleaner foods</string>
+    <string name="eat_cleaner_foods_description">Eat cleaner foods description</string>
 </resources>
