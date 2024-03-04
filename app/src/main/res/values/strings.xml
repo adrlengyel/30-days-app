@@ -6,4 +6,5 @@
     <string name="spend_less_time_on_your_phone_description">Spend less time on your phone description</string>
     <string name="eat_cleaner_foods">Eat cleaner foods</string>
     <string name="eat_cleaner_foods_description">Eat cleaner foods description</string>
+    <string name="day">"Day "</string>
 </resources>
