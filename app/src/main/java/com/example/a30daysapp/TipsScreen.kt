@@ -1,5 +1,6 @@
 package com.example.a30daysapp
 
+import android.content.res.Configuration
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -129,17 +130,10 @@ fun TipCardList(
 }
 
 @Preview (showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun TipCardListPreview(){
     _30DaysAppTheme {
         TipCardList(TipsRepository.tips)
     }
 }
-
-//@Preview (showBackground = true)
-//@Composable
-//fun TipCardPreview(){
-//    _30DaysAppTheme {
-//        TipCard(TipsRepository.tips[1], 1)
-//    }
-//}

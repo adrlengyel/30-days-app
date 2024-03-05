@@ -8,4 +8,18 @@
     <string name="eat_cleaner_foods_description">Eat cleaner foods description</string>
     <string name="day">"Day "</string>
     <string name="_30_days_of_self_improvement">30 Days of self-improvement</string>
+    <string name="workout_more_description">Workout more description</string>
+    <string name="workout_more_often">Workout more often</string>
+    <string name="work_on_your_goals">Work on your goals</string>
+    <string name="work_on_your_goals_description">Work on your goals description</string>
+    <string name="take_care_of_yourself_description">Take care of yourself description</string>
+    <string name="take_care_of_yourself">Take care of yourself</string>
+    <string name="be_more_passionate_about_your_hobby">Be more passionate about your hobby</string>
+    <string name="be_more_passionate_about_your_hobby_description">Be more passionate about your hobby description</string>
+    <string name="drink_more_water">Drink more water</string>
+    <string name="drink_more_water_description">Drink more water description</string>
+    <string name="socialize_more">Socialize more</string>
+    <string name="socialize_more_description">Socialize more description</string>
+    <string name="take_some_time_to_relax">Take some time to relax</string>
+    <string name="take_some_time_to_relax_description">Take some time to relax description</string>
 </resources>
