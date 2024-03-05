@@ -1,21 +1,31 @@
 package com.example.a30daysapp
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -27,13 +37,19 @@ import com.example.a30daysapp.model.Tip
 import com.example.a30daysapp.model.TipsRepository
 import com.example.a30daysapp.ui.theme._30DaysAppTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TipCard(
     tip: Tip,
     tipIndex: Int,
     modifier: Modifier = Modifier
 ) {
+    var enabled by remember {
+        mutableStateOf(false);
+    };
     Card(
+        elevation = CardDefaults.cardElevation(2.dp),
+        onClick = { enabled = !enabled },
         modifier = modifier
             .padding(8.dp)
             .fillMaxWidth()
@@ -41,6 +57,9 @@ fun TipCard(
         Column(
             modifier = modifier
                 .padding(16.dp)
+                .animateContentSize(
+                    animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
+                )
         ) {
             Text(
                 text = stringResource(R.string.day) + tipIndex,
@@ -51,23 +70,26 @@ fun TipCard(
                 style = MaterialTheme.typography.displayMedium
             )
             Spacer(modifier.size(10.dp))
-            Box(
-                modifier = modifier
-                    .fillMaxWidth()
-            ){
-                Image(
-                    painter = painterResource(id = tip.image),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
+            if(enabled) {
+                Box(
                     modifier = modifier
-                        .clip(RoundedCornerShape(8.dp))
+                        .height(200.dp)
                         .fillMaxWidth()
+                ){
+                    Image(
+                        painter = painterResource(id = tip.image),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = modifier
+                            .clip(RoundedCornerShape(8.dp))
+                            .fillMaxWidth()
+                    )
+                }
+                Spacer(modifier.size(10.dp))
+                Text(
+                    text = stringResource(id = tip.description)
                 )
             }
-            Spacer(modifier.size(10.dp))
-            Text(
-                text = stringResource(id = tip.description)
-            )
         }
     }
 }
